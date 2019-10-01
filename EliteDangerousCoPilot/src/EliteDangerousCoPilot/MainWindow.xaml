@@ -1,0 +1,91 @@
+<Window x:Class="NSW.EliteDangerous.Copilot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NSW.EliteDangerous.Copilot"
+        mc:Ignorable="d"
+        Title="{StaticResource App.Title}"
+        Icon="{StaticResource App.Icon}"
+        Width="800" Height="700"
+        WindowStartupLocation="CenterScreen"
+        ContentRendered="OnMainWindowContentRendered"
+        Closing="OnMainWindowClosing">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Программа">
+                <MenuItem Header="Выход"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom" Height="25">
+            <StackPanel Orientation="Horizontal"><TextBlock Name="tbApiStatus"/></StackPanel>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Информация">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Пилот" Grid.Column="0">
+                        <StackPanel>
+                            <TextBlock>ID</TextBlock>
+                            <TextBox Name="tbPilot_ID" IsReadOnly="True"/>
+                            <TextBlock>Имя</TextBlock>
+                            <TextBox Name="tbPilot_Name" IsReadOnly="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Корабль" Grid.Column="1">
+                        <StackPanel>
+                            <TextBlock>Тип</TextBlock>
+                            <TextBox Name="tbShip_Type" IsReadOnly="True"/>
+                            <TextBlock>Название</TextBlock>
+                            <TextBox Name="tbShip_Name" IsReadOnly="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                        <GroupBox Name="gbStarSystem" Header="Звездная система">
+                            <StackPanel>
+                                <TextBlock>Название</TextBlock>
+                                <TextBox Name="tbStarSystem_Name" IsReadOnly="True"/>
+                                <TextBlock>Наcеление</TextBlock>
+                                <TextBox Name="tbStarSystem_Population" IsReadOnly="True"/>
+                                <TextBlock>Правление</TextBlock>
+                                <TextBox Name="tbStarSystem_Government" IsReadOnly="True"/>
+                                <TextBlock>Безопасность</TextBlock>
+                                <TextBox Name="tbStarSystem_Security" IsReadOnly="True"/>
+                                <TextBlock>Экономика</TextBlock>
+                                <TextBox Name="tbStarSystem_Economy" IsReadOnly="True"/>
+                                <TextBlock>Вторичная экономика</TextBlock>
+                                <TextBox Name="tbStarSystem_SecondEconomy" IsReadOnly="True"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Name="gbSystemBody" Header="Ближайший объект">
+                            <StackPanel>
+                                <TextBlock>Название</TextBlock>
+                                <TextBox Name="tbSystemBody_Name" IsReadOnly="True"/>
+                                <TextBlock>Тип</TextBlock>
+                                <TextBox Name="tbSystemBody_Type" IsReadOnly="True"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Name="gbStation" Header="Станция">
+                            <StackPanel>
+                                <TextBlock>Название</TextBlock>
+                                <TextBox Name="tbStation_Name" IsReadOnly="True"/>
+                                <TextBlock>Тип</TextBlock>
+                                <TextBox Name="tbStation_Type" IsReadOnly="True"/>
+                                <TextBlock>Правление</TextBlock>
+                                <TextBox Name="tbStation_Government" IsReadOnly="True"/>
+                                <TextBlock>Экономика</TextBlock>
+                                <TextBox Name="tbStation_Economy" IsReadOnly="True"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Журнал"></TabItem>
+            <TabItem Header="Логи"></TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

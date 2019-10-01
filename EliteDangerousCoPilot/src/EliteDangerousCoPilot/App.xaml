@@ -1,0 +1,12 @@
+<Application x:Class="NSW.EliteDangerous.Copilot.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NSW.EliteDangerous.Copilot"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             DispatcherUnhandledException="AppDispatcherUnhandledException"
+             Startup="AppStartup">
+    <Application.Resources>
+        <sys:String x:Key="App.Title">Elite : Dangerous - Co-Pilot</sys:String>
+        <ImageSource x:Key="App.Icon">res/img/app-icon.ico</ImageSource>
+    </Application.Resources>
+</Application>
