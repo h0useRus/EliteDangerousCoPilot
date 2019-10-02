@@ -18,11 +18,14 @@ namespace NSW.EliteDangerous.Copilot
         public static ServiceProvider Services { get; }
         public static IConfiguration Configuration { get; private set; }
 
+        private static ILogger Log { get; }
+
         static App()
         {
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             Services = serviceCollection.BuildServiceProvider();
+            Log = Services.GetService<ILoggerFactory>().CreateLogger<App>();
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -50,6 +53,7 @@ namespace NSW.EliteDangerous.Copilot
 
         private void AppDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            Log.LogCritical(e.Exception, e.Exception.Message);
             MessageBox.Show("Произошла непредвиденная ошибка: " + e.Exception.Message, "Ошибка программы", MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
         }

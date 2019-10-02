@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using Microsoft.Extensions.Logging;
 using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
@@ -18,6 +19,7 @@ namespace NSW.EliteDangerous.Copilot
         private readonly IEliteDangerousAPI _api;
         private readonly List<ErrorModel> _errors = new List<ErrorModel>();
         private readonly List<string> _journal = new List<string>();
+
         public MainWindow(IEliteDangerousAPI api)
         {
             InitializeComponent();
