@@ -1,8 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.API.Events;
+using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.API.Statuses;
+using NSW.EliteDangerous.Copilot.Models;
 
 namespace NSW.EliteDangerous.Copilot
 {
@@ -12,25 +16,37 @@ namespace NSW.EliteDangerous.Copilot
     public partial class MainWindow : Window
     {
         private readonly IEliteDangerousAPI _api;
+        private readonly List<ErrorModel> _errors = new List<ErrorModel>();
+        private readonly List<string> _journal = new List<string>();
         public MainWindow(IEliteDangerousAPI api)
         {
             InitializeComponent();
+
+            icApiErrors.ItemsSource = _errors;
+            icJournal.ItemsSource = _journal;
+
             _api = api;
             _api.PlayerChanged += OnApiPlayerChanged;
             _api.ShipChanged += OnApiShipChanged;
             _api.LocationChanged += OnApiLocationChanged;
             _api.StatusChanged += OnApiStatusChanged;
+            _api.Errors += OnApiErrors;
+            _api.BeforeEvent += OnApiBeforeEvent;
+
         }
 
-        private void OnApiStatusChanged(object sender, ApiStatus e)
-        {
+        private void OnApiBeforeEvent(object sender, OriginalEvent e) => _journal.Add(e.Source);
+
+        private void OnApiErrors(object sender, JournalException e) => _errors.Add(new ErrorModel(e));
+
+        private void OnApiStatusChanged(object sender, ApiStatus e) =>
             tbApiStatus.Text = e switch
             {
                 ApiStatus.Pending => "Поиск журнала...",
                 ApiStatus.Running => "Журнал обрабатывается",
-                ApiStatus.Stopped => "Обработка журнала выключена"
+                ApiStatus.Stopped => "Обработка журнала выключена",
+                _ => string.Empty
             };
-        }
 
         private void OnApiLocationChanged(object sender, LocationStatus e)
         {

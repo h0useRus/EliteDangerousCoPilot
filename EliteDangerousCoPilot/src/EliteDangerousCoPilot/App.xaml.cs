@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.Copilot.Log;
 
 namespace NSW.EliteDangerous.Copilot
 {
@@ -33,7 +34,7 @@ namespace NSW.EliteDangerous.Copilot
             Configuration = builder.Build();
 
             services
-                .AddLogging(cfg => cfg.AddDebug())
+                .AddLogging(cfg => cfg.AddDebug().AddFileLogger(options => { options.MaxFileSizeInMB = 5; }))
                 .AddEliteDangerousAPI()
                 .AddScoped<MainWindow>();
         }
