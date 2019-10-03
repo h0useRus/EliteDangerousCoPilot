@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using Microsoft.Extensions.Logging;
 using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
