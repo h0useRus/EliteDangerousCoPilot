@@ -41,55 +41,60 @@ namespace NSW.EliteDangerous.Copilot
         private void OnApiErrors(object sender, JournalException e) => _errors.Add(new ErrorModel(e));
 
         private void OnApiStatusChanged(object sender, ApiStatus e) =>
-            tbApiStatus.Text = e switch
+            Dispatcher?.Invoke(() =>
             {
-                ApiStatus.Pending => "Поиск журнала...",
-                ApiStatus.Running => "Журнал обрабатывается",
-                ApiStatus.Stopped => "Обработка журнала выключена",
-                _ => string.Empty
-            };
+                tbApiStatus.Text = e switch
+                {
+                    ApiStatus.Pending => "Поиск журнала...",
+                    ApiStatus.Running => "Журнал обрабатывается",
+                    ApiStatus.Stopped => "Обработка журнала выключена",
+                    _ => string.Empty
+                };
+            });
 
-        private void OnApiLocationChanged(object sender, LocationStatus e)
-        {
-            if (e.StarSystem != null)
-            {
-                gbStarSystem.Visibility = Visibility.Visible;
-                tbStarSystem_Name.Text = e.StarSystem.Name;
-                tbStarSystem_Population.Text = e.StarSystem.Population.ToString("N");
-                tbStarSystem_Government.Text = e.StarSystem.Government ?? "Нет";
-                tbStarSystem_Security.Text = e.StarSystem.Security ?? "Нет";
-                tbStarSystem_Economy.Text = e.StarSystem.Economy ?? "Нет";
-                tbStarSystem_SecondEconomy.Text = e.StarSystem.SecondEconomy ?? "Нет";
-            }
-            else
-            {
-                gbStarSystem.Visibility = Visibility.Hidden;
-            }
 
-            if (e.Body != null)
+        private void OnApiLocationChanged(object sender, LocationStatus e) =>
+            Dispatcher?.Invoke(() =>
             {
-                gbSystemBody.Visibility = Visibility.Visible;
-                tbSystemBody_Type.Text = GetBodyType(e.Body.Type);
-                tbSystemBody_Name.Text = e.Body.Name;
-            }
-            else
-            {
-                gbSystemBody.Visibility = Visibility.Hidden;
-            }
+                if (e.StarSystem != null)
+                {
+                    gbStarSystem.Visibility = Visibility.Visible;
+                    tbStarSystem_Name.Text = e.StarSystem.Name;
+                    tbStarSystem_Population.Text = e.StarSystem.Population.ToString("N");
+                    tbStarSystem_Government.Text = e.StarSystem.Government ?? "Нет";
+                    tbStarSystem_Security.Text = e.StarSystem.Security ?? "Нет";
+                    tbStarSystem_Economy.Text = e.StarSystem.Economy ?? "Нет";
+                    tbStarSystem_SecondEconomy.Text = e.StarSystem.SecondEconomy ?? "Нет";
+                }
+                else
+                {
+                    gbStarSystem.Visibility = Visibility.Hidden;
+                }
 
-            if (e.Station != null)
-            {
-                gbStation.Visibility = Visibility.Visible;
-                tbStation_Name.Text = e.Station.Name;
-                tbStation_Type.Text = e.Station.Type;
-                tbStation_Government.Text = e.Station.Government;
-                tbStation_Economy.Text = e.Station.Economy;
-            }
-            else
-            {
-                gbStation.Visibility = Visibility.Hidden;
-            }
-        }
+                if (e.Body != null)
+                {
+                    gbSystemBody.Visibility = Visibility.Visible;
+                    tbSystemBody_Type.Text = GetBodyType(e.Body.Type);
+                    tbSystemBody_Name.Text = e.Body.Name;
+                }
+                else
+                {
+                    gbSystemBody.Visibility = Visibility.Hidden;
+                }
+
+                if (e.Station != null)
+                {
+                    gbStation.Visibility = Visibility.Visible;
+                    tbStation_Name.Text = e.Station.Name;
+                    tbStation_Type.Text = e.Station.Type;
+                    tbStation_Government.Text = e.Station.Government;
+                    tbStation_Economy.Text = e.Station.Economy;
+                }
+                else
+                {
+                    gbStation.Visibility = Visibility.Hidden;
+                }
+            });
 
         private static string GetBodyType(BodyType bodyType)
             => bodyType switch
@@ -103,17 +108,19 @@ namespace NSW.EliteDangerous.Copilot
                 _ => "Не определено",
             };
 
-        private void OnApiShipChanged(object sender, ShipStatus e)
-        {
-            tbShip_Type.Text = e.ShipType;
-            tbShip_Name.Text = !string.IsNullOrEmpty(e.Name) ? $"{e.Name} [{e.Identifier}]" : string.Empty;
-        }
+        private void OnApiShipChanged(object sender, ShipStatus e) =>
+            Dispatcher?.Invoke(() =>
+            {
+                tbShip_Type.Text = e.ShipType;
+                tbShip_Name.Text = !string.IsNullOrEmpty(e.Name) ? $"{e.Name} [{e.Identifier}]" : string.Empty;
+            });
 
-        private void OnApiPlayerChanged(object sender, PlayerStatus e)
-        {
-            tbPilot_Name.Text = e.Commander;
-            tbPilot_ID.Text = e.FrontierId;
-        }
+        private void OnApiPlayerChanged(object sender, PlayerStatus e) =>
+            Dispatcher?.Invoke(() =>
+            {
+                tbPilot_Name.Text = e.Commander;
+                tbPilot_ID.Text = e.FrontierId;
+            });
 
         private void OnMainWindowContentRendered(object sender, EventArgs e)
         {
