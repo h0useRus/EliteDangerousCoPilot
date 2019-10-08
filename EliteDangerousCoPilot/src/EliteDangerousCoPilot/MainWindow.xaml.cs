@@ -36,9 +36,9 @@ namespace NSW.EliteDangerous.Copilot
 
         }
 
-        private void OnApiBeforeEvent(object sender, OriginalEvent e) => _journal.Add(e.Source);
+        private void OnApiBeforeEvent(object sender, OriginalEvent e) => Dispatcher?.Invoke(() => _journal.Add(e.Source));
 
-        private void OnApiErrors(object sender, JournalException e) => _errors.Add(new ErrorModel(e));
+        private void OnApiErrors(object sender, JournalException e) => Dispatcher?.Invoke(() => _errors.Add(new ErrorModel(e)));
 
         private void OnApiStatusChanged(object sender, ApiStatus e) =>
             Dispatcher?.Invoke(() =>
