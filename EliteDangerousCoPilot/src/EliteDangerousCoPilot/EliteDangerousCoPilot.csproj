@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="res\img\app-icon.ico" />
+    <Resource Include="res\img\logo.ico" />
   </ItemGroup>
 
   <ItemGroup>

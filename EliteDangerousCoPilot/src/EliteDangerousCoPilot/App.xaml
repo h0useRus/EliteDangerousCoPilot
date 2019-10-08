@@ -7,6 +7,6 @@
              Startup="AppStartup">
     <Application.Resources>
         <sys:String x:Key="App.Title">Elite : Dangerous - Co-Pilot</sys:String>
-        <ImageSource x:Key="App.Icon">res/img/app-icon.ico</ImageSource>
+        <ImageSource x:Key="App.Icon">res/img/logo.ico</ImageSource>
     </Application.Resources>
 </Application>
