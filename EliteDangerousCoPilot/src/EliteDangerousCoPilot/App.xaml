@@ -6,7 +6,15 @@
              DispatcherUnhandledException="AppDispatcherUnhandledException"
              Startup="AppStartup">
     <Application.Resources>
-        <sys:String x:Key="App.Title">Elite : Dangerous - Co-Pilot</sys:String>
-        <ImageSource x:Key="App.Icon">res/img/logo.ico</ImageSource>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/UI_Ru.xaml" />
+                <ResourceDictionary Source="Resources/EliteApi_Ru.xaml" />
+                <ResourceDictionary Source="Resources/Ranks_Ru.xaml" />
+                <ResourceDictionary Source="Resources/Factions_Ru.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <sys:String x:Key="App.Title">Elite : Dangerous - Co-Pilot</sys:String>
+            <ImageSource x:Key="App.Icon">res/img/co-pilot.ico</ImageSource>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

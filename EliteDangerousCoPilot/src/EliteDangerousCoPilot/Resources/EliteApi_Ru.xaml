@@ -1,0 +1,17 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:lang="ru-RU">
+
+    <sys:String x:Key="Api.Status.0.Text">Обработка журнала остановлена</sys:String>
+    <sys:String x:Key="Api.Status.1.Text">Ожидание создания журнала</sys:String>
+    <sys:String x:Key="Api.Status.2.Text">Журнал обрабатывается</sys:String>
+    <!--BodyType-->
+    <sys:String x:Key="Api.BodyType.0.Text">Не определён</sys:String>
+    <sys:String x:Key="Api.BodyType.1.Text">Звезда</sys:String>
+    <sys:String x:Key="Api.BodyType.2.Text">Планета</sys:String>
+    <sys:String x:Key="Api.BodyType.3.Text">Планетарное кольцо</sys:String>
+    <sys:String x:Key="Api.BodyType.4.Text">Звездное кольцо</sys:String>
+    <sys:String x:Key="Api.BodyType.5.Text">Станция</sys:String>
+    <sys:String x:Key="Api.BodyType.6.Text">Астероидный кластер</sys:String>
+</ResourceDictionary>

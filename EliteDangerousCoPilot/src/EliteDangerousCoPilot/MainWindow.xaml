@@ -23,71 +23,88 @@
             </StackPanel>
         </StatusBar>
         <TabControl>
-            <TabItem Header="Информация">
+            <TabItem Header="{StaticResource Strings.Information}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Пилот" Grid.Column="0">
+                    <GroupBox Header="{StaticResource Strings.Pilot}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="0">
                         <StackPanel>
-                            <TextBlock>ID</TextBlock>
+                            <TextBlock Text="{StaticResource Strings.Id}"/>
                             <TextBox Name="tbPilot_ID" IsReadOnly="True"/>
-                            <TextBlock>Имя</TextBlock>
+                            <TextBlock Text="{StaticResource Strings.Human.Name}"/>
                             <TextBox Name="tbPilot_Name" IsReadOnly="True"/>
+                            <ItemsControl Name="icPilot_Ranks" Margin="0,5,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Margin="0,20,0,0" Text="{Binding Name}"/>
+                                                <ProgressBar Minimum="0" Maximum="100" Height="10" Value="{Binding Progress}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Корабль" Grid.Column="1">
+                    <GroupBox Header="{StaticResource Strings.Ship}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="1">
                         <StackPanel>
-                            <TextBlock>Тип</TextBlock>
+                            <TextBlock Text="{StaticResource Strings.Type}"/>
                             <TextBox Name="tbShip_Type" IsReadOnly="True"/>
-                            <TextBlock>Название</TextBlock>
+                            <TextBlock Text="{StaticResource Strings.Body.Name}"/>
                             <TextBox Name="tbShip_Name" IsReadOnly="True"/>
                         </StackPanel>
                     </GroupBox>
                     <StackPanel Orientation="Vertical" Grid.Column="2">
-                        <GroupBox Name="gbStarSystem" Header="Звездная система">
+                        <GroupBox Name="gbStarSystem" Header="{StaticResource Strings.StarSystem}" Background="GhostWhite" BorderBrush="Gainsboro">
                             <StackPanel>
-                                <TextBlock>Название</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Body.Name}"/>
                                 <TextBox Name="tbStarSystem_Name" IsReadOnly="True"/>
-                                <TextBlock>Наcеление</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Population}"/>
                                 <TextBox Name="tbStarSystem_Population" IsReadOnly="True"/>
-                                <TextBlock>Правление</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Government}"/> 
                                 <TextBox Name="tbStarSystem_Government" IsReadOnly="True"/>
-                                <TextBlock>Безопасность</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Security}"/>
                                 <TextBox Name="tbStarSystem_Security" IsReadOnly="True"/>
-                                <TextBlock>Экономика</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Economy}"/>
                                 <TextBox Name="tbStarSystem_Economy" IsReadOnly="True"/>
-                                <TextBlock>Вторичная экономика</TextBlock>
-                                <TextBox Name="tbStarSystem_SecondEconomy" IsReadOnly="True"/>
+                                <TextBlock Text="{StaticResource Strings.SecondaryEconomy}"/>
+                                <TextBox Name="tbStarSystem_SecondaryEconomy" IsReadOnly="True"/>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Name="gbSystemBody" Header="Ближайший объект">
+                        <GroupBox Name="gbSystemBody" Header="{StaticResource Strings.SystemBody}" Background="GhostWhite" BorderBrush="Gainsboro">
                             <StackPanel>
-                                <TextBlock>Название</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Body.Name}"/>
                                 <TextBox Name="tbSystemBody_Name" IsReadOnly="True"/>
-                                <TextBlock>Тип</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Type}"/>
                                 <TextBox Name="tbSystemBody_Type" IsReadOnly="True"/>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Name="gbStation" Header="Станция">
+                        <GroupBox Name="gbStation" Header="{StaticResource Strings.Station}" Background="GhostWhite" BorderBrush="Gainsboro">
                             <StackPanel>
-                                <TextBlock>Название</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Body.Name}" />
                                 <TextBox Name="tbStation_Name" IsReadOnly="True"/>
-                                <TextBlock>Тип</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Type}"/>
                                 <TextBox Name="tbStation_Type" IsReadOnly="True"/>
-                                <TextBlock>Правление</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Government}"/>
                                 <TextBox Name="tbStation_Government" IsReadOnly="True"/>
-                                <TextBlock>Экономика</TextBlock>
+                                <TextBlock Text="{StaticResource Strings.Economy}"/>
                                 <TextBox Name="tbStation_Economy" IsReadOnly="True"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Журнал"></TabItem>
-            <TabItem Header="Логи">
+            <TabItem Header="{StaticResource Strings.Navigation}"></TabItem>
+            <TabItem Header="{StaticResource Strings.Logs}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />

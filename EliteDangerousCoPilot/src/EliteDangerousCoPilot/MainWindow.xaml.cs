@@ -6,6 +6,7 @@ using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.API.Statuses;
+using NSW.EliteDangerous.Copilot.Helpers;
 using NSW.EliteDangerous.Copilot.Models;
 
 namespace NSW.EliteDangerous.Copilot
@@ -33,7 +34,6 @@ namespace NSW.EliteDangerous.Copilot
             _api.StatusChanged += OnApiStatusChanged;
             _api.Errors += OnApiErrors;
             _api.BeforeEvent += OnApiBeforeEvent;
-
         }
 
         private void OnApiBeforeEvent(object sender, OriginalEvent e) => Dispatcher?.Invoke(() => _journal.Add(e.Source));
@@ -43,13 +43,7 @@ namespace NSW.EliteDangerous.Copilot
         private void OnApiStatusChanged(object sender, ApiStatus e) =>
             Dispatcher?.Invoke(() =>
             {
-                tbApiStatus.Text = e switch
-                {
-                    ApiStatus.Pending => "Поиск журнала...",
-                    ApiStatus.Running => "Журнал обрабатывается",
-                    ApiStatus.Stopped => "Обработка журнала выключена",
-                    _ => string.Empty
-                };
+                tbApiStatus.Text = TextHelper.GetText(e);
             });
 
 
@@ -60,11 +54,11 @@ namespace NSW.EliteDangerous.Copilot
                 {
                     gbStarSystem.Visibility = Visibility.Visible;
                     tbStarSystem_Name.Text = e.StarSystem.Name;
-                    tbStarSystem_Population.Text = e.StarSystem.Population.ToString("N");
-                    tbStarSystem_Government.Text = e.StarSystem.Government ?? "Нет";
-                    tbStarSystem_Security.Text = e.StarSystem.Security ?? "Нет";
-                    tbStarSystem_Economy.Text = e.StarSystem.Economy ?? "Нет";
-                    tbStarSystem_SecondEconomy.Text = e.StarSystem.SecondEconomy ?? "Нет";
+                    tbStarSystem_Population.Text = e.StarSystem.Population.ToString("#,##0");
+                    tbStarSystem_Government.Text = e.StarSystem.Government ?? TextHelper.No;
+                    tbStarSystem_Security.Text = e.StarSystem.Security ?? TextHelper.No;
+                    tbStarSystem_Economy.Text = e.StarSystem.Economy ?? TextHelper.No;
+                    tbStarSystem_SecondaryEconomy.Text = e.StarSystem.SecondEconomy ?? TextHelper.No;
                 }
                 else
                 {
@@ -74,7 +68,7 @@ namespace NSW.EliteDangerous.Copilot
                 if (e.Body != null)
                 {
                     gbSystemBody.Visibility = Visibility.Visible;
-                    tbSystemBody_Type.Text = GetBodyType(e.Body.Type);
+                    tbSystemBody_Type.Text = TextHelper.GetText(e.Body.Type);
                     tbSystemBody_Name.Text = e.Body.Name;
                 }
                 else
@@ -96,18 +90,6 @@ namespace NSW.EliteDangerous.Copilot
                 }
             });
 
-        private static string GetBodyType(BodyType bodyType)
-            => bodyType switch
-            {
-                BodyType.AsteroidCluster => "Астероидный кластер",
-                BodyType.Planet => "Планета",
-                BodyType.PlanetaryRing => "Планетарное кольцо",
-                BodyType.Star => "Звезда",
-                BodyType.Station => "Станция",
-                BodyType.StellarRing => "Звездное кольцо",
-                _ => "Не определено",
-            };
-
         private void OnApiShipChanged(object sender, ShipStatus e) =>
             Dispatcher?.Invoke(() =>
             {
@@ -120,6 +102,38 @@ namespace NSW.EliteDangerous.Copilot
             {
                 tbPilot_Name.Text = e.Commander;
                 tbPilot_ID.Text = e.FrontierId;
+
+                #if !DEBUG
+                if(string.IsNullOrWhiteSpace(tbPilot_Name.Text)) return;
+                #endif
+
+                icPilot_Ranks.ItemsSource = new List<PlayerRank>
+                {
+                    new PlayerRank
+                    {
+                        Image = ImageHelper.GetImage(e.CombatRank.Rank),
+                        Name = TextHelper.GetText(e.CombatRank.Rank),
+                        Progress = e.CombatRank.Progress
+                    },
+                    new PlayerRank
+                    {
+                        Image = ImageHelper.GetImage(e.ExplorationRank.Rank),
+                        Name = TextHelper.GetText(e.ExplorationRank.Rank),
+                        Progress = e.ExplorationRank.Progress
+                    },
+                    new PlayerRank
+                    {
+                        Image = ImageHelper.GetImage(e.TradeRank.Rank),
+                        Name = TextHelper.GetText(e.TradeRank.Rank),
+                        Progress = e.TradeRank.Progress
+                    },
+                    new PlayerRank
+                    {
+                        Image = ImageHelper.GetImage(e.CqcRank.Rank),
+                        Name = TextHelper.GetText(e.CqcRank.Rank),
+                        Progress = e.CqcRank.Progress
+                    }
+                };
             });
 
         private void OnMainWindowContentRendered(object sender, EventArgs e)

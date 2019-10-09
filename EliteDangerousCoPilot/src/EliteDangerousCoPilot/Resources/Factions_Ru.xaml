@@ -1,0 +1,51 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:lang="ru-RU">
+    <!--Federation-->
+    <sys:String x:Key="Faction.Federation.Title">Федерация</sys:String>
+    <ImageSource x:Key="Faction.Federation.Icon">../res/img/factions/federation.png</ImageSource>
+    <ImageSource x:Key="Faction.Federation.Navy.Icon">../res/img/factions/federation_navy.png</ImageSource>
+    <sys:String x:Key="Faction.Federation.0.Text">Нет</sys:String>
+    <sys:String x:Key="Faction.Federation.1.Text">Рекрут</sys:String>
+    <sys:String x:Key="Faction.Federation.2.Text">Кадет</sys:String>
+    <sys:String x:Key="Faction.Federation.3.Text">Гардемарин</sys:String>
+    <sys:String x:Key="Faction.Federation.4.Text">Старшина</sys:String>
+    <sys:String x:Key="Faction.Federation.5.Text">Главный старшина</sys:String>
+    <sys:String x:Key="Faction.Federation.6.Text">Мичман</sys:String>
+    <sys:String x:Key="Faction.Federation.7.Text">Прапорщик</sys:String>
+    <sys:String x:Key="Faction.Federation.8.Text">Лейтенант</sys:String>
+    <sys:String x:Key="Faction.Federation.9.Text">Капитан-лейтенант</sys:String>
+    <sys:String x:Key="Faction.Federation.10.Text">Начальник гарнизона</sys:String>
+    <sys:String x:Key="Faction.Federation.11.Text">Командир корабля</sys:String>
+    <sys:String x:Key="Faction.Federation.12.Text">Контр-адмирал</sys:String>
+    <sys:String x:Key="Faction.Federation.13.Text">Вице-адмирал</sys:String>
+    <sys:String x:Key="Faction.Federation.14.Text">Адмирал</sys:String>
+    <!--Empire-->
+    <sys:String x:Key="Faction.Empire.Title">Империя</sys:String>
+    <ImageSource x:Key="Faction.Empire.Icon">../res/img/factions/empire.png</ImageSource>
+    <ImageSource x:Key="Faction.Empire.Navy.Icon">../res/img/factions/empire_navy.png</ImageSource>
+    <sys:String x:Key="Faction.Empire.0.Text">Нет</sys:String>
+    <sys:String x:Key="Faction.Empire.1.Text">Чужак</sys:String>
+    <sys:String x:Key="Faction.Empire.2.Text">Крепостной</sys:String>
+    <sys:String x:Key="Faction.Empire.3.Text">Мастер</sys:String>
+    <sys:String x:Key="Faction.Empire.4.Text">Оруженосец</sys:String>
+    <sys:String x:Key="Faction.Empire.5.Text">Рыцарь</sys:String>
+    <sys:String x:Key="Faction.Empire.6.Text">Лорд</sys:String>
+    <sys:String x:Key="Faction.Empire.7.Text">Барон</sys:String>
+    <sys:String x:Key="Faction.Empire.8.Text">Виконт</sys:String>
+    <sys:String x:Key="Faction.Empire.9.Text">Граф</sys:String>
+    <sys:String x:Key="Faction.Empire.10.Text">Эрл</sys:String>
+    <sys:String x:Key="Faction.Empire.11.Text">Маркиз</sys:String>
+    <sys:String x:Key="Faction.Empire.12.Text">Герцог</sys:String>
+    <sys:String x:Key="Faction.Empire.13.Text">Принц</sys:String>
+    <sys:String x:Key="Faction.Empire.14.Text">Король</sys:String>
+    <!--Alliance-->
+    <sys:String x:Key="Faction.Alliance.Title">Альянс</sys:String>
+    <ImageSource x:Key="Faction.Alliance.Icon">../res/img/factions/alliance.png</ImageSource>
+    <ImageSource x:Key="Faction.Alliance.Navy.Icon">../res/img/factions/alliance_navy.png</ImageSource>
+    <!--Independent-->
+    <sys:String x:Key="Faction.Independent.Title">Независимые</sys:String>
+    <ImageSource x:Key="Faction.Independent.Icon">../res/img/factions/independent.png</ImageSource>
+    <ImageSource x:Key="Faction.Independent.Navy.Icon">../res/img/factions/independent_navy.png</ImageSource>
+</ResourceDictionary>
