@@ -14,4 +14,12 @@
     <sys:String x:Key="Api.BodyType.4.Text">Звездное кольцо</sys:String>
     <sys:String x:Key="Api.BodyType.5.Text">Станция</sys:String>
     <sys:String x:Key="Api.BodyType.6.Text">Астероидный кластер</sys:String>
+    <!--LegalState-->
+    <sys:String x:Key="Api.LegalState.0.Text">Чист</sys:String>
+    <sys:String x:Key="Api.LegalState.1.Text">Незаконный груз</sys:String>
+    <sys:String x:Key="Api.LegalState.2.Text">Нарушение скорости</sys:String>
+    <sys:String x:Key="Api.LegalState.3.Text">Разыскивается</sys:String>
+    <sys:String x:Key="Api.LegalState.4.Text">Враждебный</sys:String>
+    <sys:String x:Key="Api.LegalState.5.Text">Разыскивается пассажиром</sys:String>
+    <sys:String x:Key="Api.LegalState.6.Text">Оправдан</sys:String>
 </ResourceDictionary>

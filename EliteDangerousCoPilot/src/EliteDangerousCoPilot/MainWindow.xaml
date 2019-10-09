@@ -36,6 +36,8 @@
                             <TextBox Name="tbPilot_ID" IsReadOnly="True"/>
                             <TextBlock Text="{StaticResource Strings.Human.Name}"/>
                             <TextBox Name="tbPilot_Name" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.LegalState}"/>
+                            <TextBox Name="tbPilot_LegalState" IsReadOnly="True"/>
                             <ItemsControl Name="icPilot_Ranks" Margin="0,5,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>

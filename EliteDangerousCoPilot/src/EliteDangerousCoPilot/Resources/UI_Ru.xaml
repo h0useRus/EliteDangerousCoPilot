@@ -13,6 +13,7 @@
     <sys:String x:Key="Strings.Id">Идентификатор</sys:String>
     <sys:String x:Key="Strings.Human.Name">Имя</sys:String>
     <sys:String x:Key="Strings.Body.Name">Название</sys:String>
+    <sys:String x:Key="Strings.LegalState">Законность</sys:String>
     <sys:String x:Key="Strings.Type">Тип</sys:String>
     <sys:String x:Key="Strings.Population">Наcеление</sys:String>
     <sys:String x:Key="Strings.Government">Правление</sys:String>

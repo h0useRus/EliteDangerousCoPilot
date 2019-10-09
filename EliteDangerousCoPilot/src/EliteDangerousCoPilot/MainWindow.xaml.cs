@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using NSW.EliteDangerous.API;
-using NSW.EliteDangerous.API.Events;
-using NSW.EliteDangerous.API.Exceptions;
-using NSW.EliteDangerous.API.Statuses;
-using NSW.EliteDangerous.Copilot.Helpers;
-using NSW.EliteDangerous.Copilot.Models;
 
 namespace NSW.EliteDangerous.Copilot
 {
+    using API;
+    using API.Events;
+    using API.Exceptions;
+    using API.Statuses;
+    using Helpers;
+    using Models;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -102,10 +103,7 @@ namespace NSW.EliteDangerous.Copilot
             {
                 tbPilot_Name.Text = e.Commander;
                 tbPilot_ID.Text = e.FrontierId;
-
-                #if !DEBUG
-                if(string.IsNullOrWhiteSpace(tbPilot_Name.Text)) return;
-                #endif
+                tbPilot_LegalState.Text = TextHelper.GetText(e.LegalState);
 
                 icPilot_Ranks.ItemsSource = new List<PlayerRank>
                 {
@@ -134,6 +132,8 @@ namespace NSW.EliteDangerous.Copilot
                         Progress = e.CqcRank.Progress
                     }
                 };
+
+                
             });
 
         private void OnMainWindowContentRendered(object sender, EventArgs e)
