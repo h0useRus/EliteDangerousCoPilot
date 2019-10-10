@@ -56,10 +56,14 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <uc:CommonRankPanel x:Name="rankCombat" Rank="Combat"/>
+                            <!--<uc:CommonRankPanel x:Name="rankCombat" Rank="Combat"/>
                             <uc:CommonRankPanel x:Name="rankTrade" Rank="Trade"/>
                             <uc:CommonRankPanel x:Name="rankExplore" Rank="Exploration"/>
-                            <uc:CommonRankPanel x:Name="rankCqc" Rank="Cqc"/>
+                            <uc:CommonRankPanel x:Name="rankCqc" Rank="Cqc"/>-->
+                            <uc:MajorFactionPanel x:Name="mfpAlliance" Faction="Alliance"/>
+                            <uc:MajorFactionPanel x:Name="mfpEmpire" Faction="Empire"/>
+                            <uc:MajorFactionPanel x:Name="mfpFederation" Faction="Federation"/>
+                            <uc:MajorFactionPanel x:Name="mfpIndependent" Faction="Independent"/>
                             <Button Click="ButtonBase_OnClick" Margin="10">Click</Button>
                         </StackPanel>
                     </GroupBox>

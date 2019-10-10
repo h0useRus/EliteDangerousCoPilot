@@ -6,7 +6,6 @@
     <sys:String x:Key="Faction.Federation.Title">Федерация</sys:String>
     <ImageSource x:Key="Faction.Federation.Icon">../res/img/factions/federation.png</ImageSource>
     <ImageSource x:Key="Faction.Federation.Navy.Icon">../res/img/factions/federation_navy.png</ImageSource>
-    <sys:String x:Key="Faction.Federation.0.Text">Нет</sys:String>
     <sys:String x:Key="Faction.Federation.1.Text">Рекрут</sys:String>
     <sys:String x:Key="Faction.Federation.2.Text">Кадет</sys:String>
     <sys:String x:Key="Faction.Federation.3.Text">Гардемарин</sys:String>
@@ -25,7 +24,6 @@
     <sys:String x:Key="Faction.Empire.Title">Империя</sys:String>
     <ImageSource x:Key="Faction.Empire.Icon">../res/img/factions/empire.png</ImageSource>
     <ImageSource x:Key="Faction.Empire.Navy.Icon">../res/img/factions/empire_navy.png</ImageSource>
-    <sys:String x:Key="Faction.Empire.0.Text">Нет</sys:String>
     <sys:String x:Key="Faction.Empire.1.Text">Чужак</sys:String>
     <sys:String x:Key="Faction.Empire.2.Text">Крепостной</sys:String>
     <sys:String x:Key="Faction.Empire.3.Text">Мастер</sys:String>
@@ -48,4 +46,11 @@
     <sys:String x:Key="Faction.Independent.Title">Независимые</sys:String>
     <ImageSource x:Key="Faction.Independent.Icon">../res/img/factions/independent.png</ImageSource>
     <ImageSource x:Key="Faction.Independent.Navy.Icon">../res/img/factions/independent_navy.png</ImageSource>
+    <!--Reputation-->
+    <sys:String x:Key="Faction.Reputation.0.Text">Враждебный</sys:String>
+    <sys:String x:Key="Faction.Reputation.1.Text">Недружественный</sys:String>
+    <sys:String x:Key="Faction.Reputation.2.Text">Нейтральный</sys:String>
+    <sys:String x:Key="Faction.Reputation.3.Text">Радушный</sys:String>
+    <sys:String x:Key="Faction.Reputation.4.Text">Дружелюбный</sys:String>
+    <sys:String x:Key="Faction.Reputation.5.Text">Союзный</sys:String>
 </ResourceDictionary>

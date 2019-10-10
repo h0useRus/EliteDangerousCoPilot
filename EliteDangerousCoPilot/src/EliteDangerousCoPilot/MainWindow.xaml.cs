@@ -104,7 +104,7 @@ namespace NSW.EliteDangerous.Copilot
                 tbPilot_Name.Text = e.Commander;
                 tbPilot_ID.Text = e.FrontierId;
                 tbPilot_LegalState.Text = TextHelper.GetText(e.LegalState);
-
+                         
                 icPilot_Ranks.ItemsSource = new List<PlayerRank>
                 {
                     new PlayerRank
@@ -148,18 +148,25 @@ namespace NSW.EliteDangerous.Copilot
         private void OnMainWindowClosing(object sender, CancelEventArgs e) => _api.Stop();
 
         private int rank = 0;
+        private int rep = 0;
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             rank++;
-            if (rank > 8)
+            if (rank > 14)
             {
                 rank = 0;
             }
 
-            rankCombat.DataBind(rank,rank*10);
-            rankTrade.DataBind(rank,rank*10);
-            rankExplore.DataBind(rank,rank*10);
-            rankCqc.DataBind(rank,rank*10);
+            rep++;
+            if (rep > 5)
+            {
+                rep = 0;
+            }
+
+            mfpAlliance.DataBind(rank,rep);
+            mfpEmpire.DataBind(rank,rep);
+            mfpFederation.DataBind(rank,rep);
+            mfpIndependent.DataBind(rank,rep);
         }
     }
 }
