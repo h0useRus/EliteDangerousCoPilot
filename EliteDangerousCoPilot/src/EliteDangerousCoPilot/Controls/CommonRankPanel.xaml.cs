@@ -17,9 +17,9 @@ namespace NSW.EliteDangerous.Copilot.Controls
     public partial class CommonRankPanel : UserControl
     {
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(nameof(Image), typeof(ImageSource), typeof(CommonRankPanel));
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(CommonRankPanel));
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(RankText), typeof(string), typeof(CommonRankPanel));
         public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register(nameof(Progress), typeof(int), typeof(CommonRankPanel));
-        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(int), typeof(CommonRankPanel),
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(RankValue), typeof(int), typeof(CommonRankPanel),
             new FrameworkPropertyMetadata(-1,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
                 OnValueChanged
@@ -36,7 +36,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
             set => SetValue(RankProperty, value);
         }
 
-        protected int Value
+        protected int RankValue
         {
             get => (int)GetValue(ValueProperty);
             private set => SetValue(ValueProperty, value);
@@ -54,7 +54,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
             private set => SetValue(ImageProperty, value);
         }
 
-        protected string Text
+        protected string RankText
         {
             get => (string)GetValue(TextProperty);
             private set => SetValue(TextProperty, value);
@@ -64,12 +64,12 @@ namespace NSW.EliteDangerous.Copilot.Controls
         {
             InitializeComponent();
             DataContext = this;
-            Value = 0;
+            RankValue = 0;
         }
 
         public void DataBind(int rankValue, int progress)
         {
-            Value = rankValue;
+            RankValue = rankValue;
             Progress = progress;
         }
 
@@ -77,8 +77,8 @@ namespace NSW.EliteDangerous.Copilot.Controls
         {
             if (d is CommonRankPanel control)
             {
-                control.Text = AppRes.GetResource<string>($"Rank.{control.Rank.ToString()}.{control.Value}.Text");
-                control.Image = AppRes.GetResource<ImageSource>($"Rank.{control.Rank.ToString()}.{control.Value}.Icon");
+                control.RankText = AppRes.GetResource<string>($"Rank.{control.Rank.ToString()}.{control.RankValue}.Text");
+                control.Image = AppRes.GetResource<ImageSource>($"Rank.{control.Rank.ToString()}.{control.RankValue}.Icon");
             }
         }
     }

@@ -29,7 +29,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="{StaticResource Strings.Pilot}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="0">
                         <StackPanel>
@@ -60,11 +59,10 @@
                             <uc:CommonRankPanel x:Name="rankTrade" Rank="Trade"/>
                             <uc:CommonRankPanel x:Name="rankExplore" Rank="Exploration"/>
                             <uc:CommonRankPanel x:Name="rankCqc" Rank="Cqc"/>-->
-                            <uc:MajorFactionPanel x:Name="mfpAlliance" Faction="Alliance"/>
+                            <!--<uc:MajorFactionPanel x:Name="mfpAlliance" Faction="Alliance"/>
                             <uc:MajorFactionPanel x:Name="mfpEmpire" Faction="Empire"/>
                             <uc:MajorFactionPanel x:Name="mfpFederation" Faction="Federation"/>
-                            <uc:MajorFactionPanel x:Name="mfpIndependent" Faction="Independent"/>
-                            <Button Click="ButtonBase_OnClick" Margin="10">Click</Button>
+                            <uc:MajorFactionPanel x:Name="mfpIndependent" Faction="Independent"/>-->
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="{StaticResource Strings.Ship}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="1">
@@ -75,7 +73,10 @@
                             <TextBox Name="tbShip_Name" IsReadOnly="True"/>
                         </StackPanel>
                     </GroupBox>
-                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                </Grid>
+            </TabItem>
+            <TabItem Header="{StaticResource Strings.Navigation}">
+                 <StackPanel Orientation="Vertical">
                         <GroupBox Name="gbStarSystem" Header="{StaticResource Strings.StarSystem}" Background="GhostWhite" BorderBrush="Gainsboro">
                             <StackPanel>
                                 <TextBlock Text="{StaticResource Strings.Body.Name}"/>
@@ -113,9 +114,7 @@
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
-                </Grid>
             </TabItem>
-            <TabItem Header="{StaticResource Strings.Navigation}"></TabItem>
             <TabItem Header="{StaticResource Strings.Logs}">
                 <Grid>
                     <Grid.RowDefinitions>

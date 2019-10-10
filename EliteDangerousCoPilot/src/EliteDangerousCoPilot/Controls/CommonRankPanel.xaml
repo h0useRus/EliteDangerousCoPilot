@@ -9,7 +9,7 @@
     <Grid>
         <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Height="120"/>
         <StackPanel Margin="0,110,0,0">
-            <TextBlock Text="{Binding Text}" TextAlignment="Center" />
+            <TextBlock Text="{Binding RankText}" TextAlignment="Center" />
             <ProgressBar Margin="2,0,2,0" Minimum="0" Maximum="100" Height="3" Value="{Binding Progress}"/>
         </StackPanel>    
     </Grid>

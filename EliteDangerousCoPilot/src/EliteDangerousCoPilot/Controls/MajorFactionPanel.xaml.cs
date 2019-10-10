@@ -1,4 +1,3 @@
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,8 +17,8 @@ namespace NSW.EliteDangerous.Copilot.Controls
     public partial class MajorFactionPanel : UserControl
     {
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(nameof(Image), typeof(ImageSource), typeof(MajorFactionPanel));
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(MajorFactionPanel));
-        public static readonly DependencyProperty ReputationProperty = DependencyProperty.Register(nameof(Reputation), typeof(string), typeof(MajorFactionPanel));
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(RankText), typeof(string), typeof(MajorFactionPanel));
+        public static readonly DependencyProperty ReputationProperty = DependencyProperty.Register(nameof(ReputationText), typeof(string), typeof(MajorFactionPanel));
         public static readonly DependencyProperty RankValueProperty = DependencyProperty.Register(nameof(RankValue), typeof(int), typeof(MajorFactionPanel),
             new FrameworkPropertyMetadata(-1,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
@@ -62,12 +61,12 @@ namespace NSW.EliteDangerous.Copilot.Controls
             private set => SetValue(ImageProperty, value);
         }
 
-        protected string Text
+        protected string RankText
         {
             get => (string)GetValue(TextProperty);
             private set => SetValue(TextProperty, value);
         }
-        protected string Reputation
+        protected string ReputationText
         {
             get => (string)GetValue(ReputationProperty);
             private set => SetValue(ReputationProperty, value);
@@ -91,19 +90,17 @@ namespace NSW.EliteDangerous.Copilot.Controls
         {
             if (d is MajorFactionPanel c)
             {
-                c.Reputation = AppRes.GetResource<string>($"Faction.Reputation.{e.NewValue}.Text");
-
-                var color = e.NewValue switch
+                c.ReputationText = AppRes.GetResource<string>($"Faction.Reputation.{e.NewValue}.Text");
+                c.tbRepuation.Foreground =  new SolidColorBrush(e.NewValue switch
                 {
                     0 => Colors.Red,
                     1 => Colors.Orange,
                     2 => Colors.DarkGray,
                     3 => Colors.Green,
                     4 => Colors.Blue,
-                    5 => Colors.Magenta
-                };
-
-                c.tbRepuation.Foreground =  new SolidColorBrush(color);
+                    5 => Colors.Magenta,
+                    _ => Colors.Black
+                });
             }
         }
 
@@ -123,7 +120,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
                 else
                 {
                     c.Image = AppRes.GetResource<ImageSource>($"Faction.{c.Faction}.Navy.Icon");
-                    c.Text = text;
+                    c.RankText = text;
                     c.tbRank.Visibility = Visibility.Visible;
                 }
             }

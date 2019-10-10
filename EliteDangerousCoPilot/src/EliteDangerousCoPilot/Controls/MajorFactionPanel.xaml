@@ -9,8 +9,8 @@
     <Grid>
         <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Height="120"/>
         <StackPanel>
-            <TextBlock Name="tbRank" Text="{Binding Text}" TextAlignment="Center" />
-            <TextBlock Name="tbRepuation" Margin="0,98,0,0" Text="{Binding Reputation}" TextAlignment="Center" />
+            <TextBlock Name="tbRank" Text="{Binding RankText}" TextAlignment="Center" />
+            <TextBlock Name="tbRepuation" Margin="0,98,0,0" Text="{Binding ReputationText}" TextAlignment="Center" />
         </StackPanel>     
     </Grid>
 </UserControl>
