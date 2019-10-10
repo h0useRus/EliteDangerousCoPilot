@@ -146,5 +146,20 @@ namespace NSW.EliteDangerous.Copilot
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e) => _api.Stop();
+
+        private int rank = 0;
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            rank++;
+            if (rank > 8)
+            {
+                rank = 0;
+            }
+
+            rankCombat.DataBind(rank,rank*10);
+            rankTrade.DataBind(rank,rank*10);
+            rankExplore.DataBind(rank,rank*10);
+            rankCqc.DataBind(rank,rank*10);
+        }
     }
 }

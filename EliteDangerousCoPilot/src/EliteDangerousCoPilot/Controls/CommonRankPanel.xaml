@@ -1,0 +1,16 @@
+<UserControl x:Class="NSW.EliteDangerous.Copilot.Controls.CommonRankPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSW.EliteDangerous.Copilot.Controls"
+             mc:Ignorable="d"
+             Width="120" Height="130">
+    <Grid>
+        <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Height="120"/>
+        <StackPanel Margin="0,110,0,0">
+            <TextBlock Text="{Binding Text}" TextAlignment="Center" />
+            <ProgressBar Margin="2,0,2,0" Minimum="0" Maximum="100" Height="3" Value="{Binding Progress}"/>
+        </StackPanel>    
+    </Grid>
+</UserControl>
