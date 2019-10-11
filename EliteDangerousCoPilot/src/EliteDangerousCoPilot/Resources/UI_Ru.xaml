@@ -5,15 +5,19 @@
 
     <sys:String x:Key="Strings.Yes">Да</sys:String>
     <sys:String x:Key="Strings.No">Нет</sys:String>
+    <sys:String x:Key="Strings.NoInformation">Информация отсутсвует</sys:String>
     <sys:String x:Key="Strings.Information">Информация</sys:String>
     <sys:String x:Key="Strings.Navigation">Навигация</sys:String>
     <sys:String x:Key="Strings.Logs">Логи</sys:String>
     <sys:String x:Key="Strings.Pilot">Пилот</sys:String>
     <sys:String x:Key="Strings.Ship">Корабль</sys:String>
     <sys:String x:Key="Strings.Id">Идентификатор</sys:String>
+    <sys:String x:Key="Strings.License">Лицензия</sys:String>
     <sys:String x:Key="Strings.Human.Name">Имя</sys:String>
     <sys:String x:Key="Strings.Body.Name">Название</sys:String>
     <sys:String x:Key="Strings.LegalState">Законность</sys:String>
+    <sys:String x:Key="Strings.Ranks">Достижения</sys:String>
+    <sys:String x:Key="Strings.FactionRanks">Ранг основных фракций</sys:String>
     <sys:String x:Key="Strings.Type">Тип</sys:String>
     <sys:String x:Key="Strings.Population">Наcеление</sys:String>
     <sys:String x:Key="Strings.Government">Правление</sys:String>

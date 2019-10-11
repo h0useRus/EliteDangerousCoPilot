@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Media;
 
 namespace NSW.EliteDangerous.Copilot
 {
@@ -44,7 +45,6 @@ namespace NSW.EliteDangerous.Copilot
                 tbApiStatus.Text = TextHelper.GetText(e);
             });
 
-
         private void OnApiLocationChanged(object sender, LocationStatus e) =>
             Dispatcher?.Invoke(() =>
             {
@@ -53,10 +53,10 @@ namespace NSW.EliteDangerous.Copilot
                     gbStarSystem.Visibility = Visibility.Visible;
                     tbStarSystem_Name.Text = e.StarSystem.Name;
                     tbStarSystem_Population.Text = e.StarSystem.Population.ToString("#,##0");
-                    tbStarSystem_Government.Text = e.StarSystem.Government ?? TextHelper.No;
-                    tbStarSystem_Security.Text = e.StarSystem.Security ?? TextHelper.No;
-                    tbStarSystem_Economy.Text = e.StarSystem.Economy ?? TextHelper.No;
-                    tbStarSystem_SecondaryEconomy.Text = e.StarSystem.SecondEconomy ?? TextHelper.No;
+                    tbStarSystem_Government.Text = e.StarSystem.Government.ToString();
+                    tbStarSystem_Security.Text = e.StarSystem.Security.ToString();
+                    tbStarSystem_Economy.Text = e.StarSystem.Economy.ToString();
+                    tbStarSystem_SecondaryEconomy.Text = e.StarSystem.SecondEconomy.ToString();
                 }
                 else
                 {
@@ -79,8 +79,8 @@ namespace NSW.EliteDangerous.Copilot
                     gbStation.Visibility = Visibility.Visible;
                     tbStation_Name.Text = e.Station.Name;
                     tbStation_Type.Text = e.Station.Type;
-                    tbStation_Government.Text = e.Station.Government;
-                    tbStation_Economy.Text = e.Station.Economy;
+                    tbStation_Government.Text = e.Station.Government.ToString();
+                    tbStation_Economy.Text = e.Station.Economy.ToString();
                 }
                 else
                 {
@@ -91,46 +91,63 @@ namespace NSW.EliteDangerous.Copilot
         private void OnApiShipChanged(object sender, ShipStatus e) =>
             Dispatcher?.Invoke(() =>
             {
-                tbShip_Type.Text = e.ShipType;
-                tbShip_Name.Text = !string.IsNullOrEmpty(e.Name) ? $"{e.Name} [{e.Identifier}]" : string.Empty;
+                ShipType.Text = e.ShipType.ToString();
+                ShipName.Text = !string.IsNullOrEmpty(e.Name) ? $"{e.Name} [{e.Identifier}]" : string.Empty;
+                
             });
 
         private void OnApiPlayerChanged(object sender, PlayerStatus e) =>
             Dispatcher?.Invoke(() =>
             {
-                tbPilot_Name.Text = e.Commander;
-                tbPilot_ID.Text = e.FrontierId;
-                tbPilot_LegalState.Text = TextHelper.GetText(e.LegalState);
-                         
-                icPilot_Ranks.ItemsSource = new List<PlayerRank>
+                if (string.IsNullOrWhiteSpace(e.Commander))
                 {
-                    new PlayerRank
-                    {
-                        Image = ImageHelper.GetImage(e.CombatRank.Rank),
-                        Name = TextHelper.GetText(e.CombatRank.Rank),
-                        Progress = e.CombatRank.Progress
-                    },
-                    new PlayerRank
-                    {
-                        Image = ImageHelper.GetImage(e.ExplorationRank.Rank),
-                        Name = TextHelper.GetText(e.ExplorationRank.Rank),
-                        Progress = e.ExplorationRank.Progress
-                    },
-                    new PlayerRank
-                    {
-                        Image = ImageHelper.GetImage(e.TradeRank.Rank),
-                        Name = TextHelper.GetText(e.TradeRank.Rank),
-                        Progress = e.TradeRank.Progress
-                    },
-                    new PlayerRank
-                    {
-                        Image = ImageHelper.GetImage(e.CqcRank.Rank),
-                        Name = TextHelper.GetText(e.CqcRank.Rank),
-                        Progress = e.CqcRank.Progress
-                    }
-                };
+                    PilotName.Text = TextHelper.NoInformation;
+                    PilotName.Foreground = new SolidColorBrush(Colors.DarkGray);
+                    PilotName.FontStyle = FontStyles.Italic;
+                }
+                else
+                {
+                    PilotName.Text = e.Commander;
+                    PilotName.Foreground = new SolidColorBrush(SystemColors.ControlTextColor);
+                    PilotName.FontStyle = FontStyles.Normal;
+                }
 
-                
+                if (string.IsNullOrWhiteSpace(e.FrontierId))
+                {
+                    PilotLicense.Text = TextHelper.NoInformation;
+                    PilotLicense.Foreground = new SolidColorBrush(Colors.DarkGray);
+                    PilotLicense.FontStyle = FontStyles.Italic;
+                }
+                else
+                {
+                    PilotLicense.Text = e.FrontierId;
+                    PilotLicense.Foreground = new SolidColorBrush(SystemColors.ControlTextColor);
+                    PilotLicense.FontStyle = FontStyles.Normal;
+                }
+
+                PilotLegalState.Text = TextHelper.GetText(e.LegalState);
+                PilotLegalState.Foreground = new SolidColorBrush(e.LegalState switch
+                {
+                    LegalState.Clean => Colors.Green,
+                    LegalState.Hostile => Colors.Red,
+                    LegalState.IllegalCargo => Colors.Orange,
+                    LegalState.PassengerWanted => Colors.Orange,
+                    LegalState.Speeding => Colors.Orange,
+                    LegalState.Wanted => Colors.Salmon,
+                    LegalState.Warrant => Colors.Magenta
+                });
+
+                PilotLegalStateBorder.BorderBrush = PilotLegalState.Foreground;
+
+                PilotRankCombat.DataBind((int)e.CombatRank.Rank, e.CombatRank.Progress);
+                PilotRankExplore.DataBind((int)e.ExplorationRank.Rank, e.ExplorationRank.Progress);
+                PilotRankTrade.DataBind((int)e.TradeRank.Rank, e.TradeRank.Progress);
+                PilotRankCqc.DataBind((int)e.CqcRank.Rank, e.CqcRank.Progress);
+
+                PilotRankEmpire.DataBind((int)e.EmpireRank.Rank, e.EmpireRank.Progress, (int)e.EmpireReputation.Reputation);
+                PilotRankFederation.DataBind((int)e.FederationRank.Rank, e.FederationRank.Progress, (int)e.FederationReputation.Reputation);
+                PilotRankAlliance.DataBind(0, 0, (int)e.AllianceReputation.Reputation);
+                PilotRankIndependent.DataBind(0, 0, (int)e.IndependentReputation.Reputation);
             });
 
         private void OnMainWindowContentRendered(object sender, EventArgs e)
@@ -143,27 +160,5 @@ namespace NSW.EliteDangerous.Copilot
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e) => _api.Stop();
-
-        private int rank = 0;
-        private int rep = 0;
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            rank++;
-            if (rank > 14)
-            {
-                rank = 0;
-            }
-
-            rep++;
-            if (rep > 5)
-            {
-                rep = 0;
-            }
-
-            mfpAlliance.DataBind(rank,rep);
-            mfpEmpire.DataBind(rank,rep);
-            mfpFederation.DataBind(rank,rep);
-            mfpIndependent.DataBind(rank,rep);
-        }
     }
 }

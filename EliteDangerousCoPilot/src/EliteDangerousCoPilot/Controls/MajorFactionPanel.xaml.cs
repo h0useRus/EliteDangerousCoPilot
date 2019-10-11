@@ -7,7 +7,6 @@ namespace NSW.EliteDangerous.Copilot.Controls
 {
     public enum MajorFaction
     {
-        Unknown,
         Federation,
         Empire,
         Alliance,
@@ -19,20 +18,20 @@ namespace NSW.EliteDangerous.Copilot.Controls
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(nameof(Image), typeof(ImageSource), typeof(MajorFactionPanel));
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(RankText), typeof(string), typeof(MajorFactionPanel));
         public static readonly DependencyProperty ReputationProperty = DependencyProperty.Register(nameof(ReputationText), typeof(string), typeof(MajorFactionPanel));
+        public static readonly DependencyProperty ReputationBrushProperty = DependencyProperty.Register(nameof(ReputationBrush), typeof(Brush), typeof(MajorFactionPanel));
+        public static readonly DependencyProperty RankVisibilityProperty = DependencyProperty.Register(nameof(RankVisibility), typeof(Visibility), typeof(MajorFactionPanel));
         public static readonly DependencyProperty RankValueProperty = DependencyProperty.Register(nameof(RankValue), typeof(int), typeof(MajorFactionPanel),
             new FrameworkPropertyMetadata(-1,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
                 OnFactionChanged
             ));
-
         public static readonly DependencyProperty ReputationValueProperty = DependencyProperty.Register(nameof(ReputationValue), typeof(int), typeof(MajorFactionPanel),
             new FrameworkPropertyMetadata(-1,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
                 OnReputationValueChanged
             ));
-
         public static readonly DependencyProperty FactionProperty = DependencyProperty.Register(nameof(Faction), typeof(MajorFaction), typeof(MajorFactionPanel),
-            new FrameworkPropertyMetadata(MajorFaction.Unknown,
+            new FrameworkPropertyMetadata(MajorFaction.Independent,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
                 OnFactionChanged
             ));
@@ -72,6 +71,18 @@ namespace NSW.EliteDangerous.Copilot.Controls
             private set => SetValue(ReputationProperty, value);
         }
 
+        protected Brush ReputationBrush
+        {
+            get => (Brush)GetValue(ReputationBrushProperty);
+            private set => SetValue(ReputationBrushProperty, value);
+        }
+
+        protected Visibility RankVisibility
+        {
+            get => (Visibility)GetValue(RankVisibilityProperty);
+            private set => SetValue(RankVisibilityProperty, value);
+        }
+
         public MajorFactionPanel()
         {
             InitializeComponent();
@@ -80,7 +91,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
             ReputationValue = 2;
         }
 
-        public void DataBind(int rank, int reputation)
+        public void DataBind(int rank, int progress, int reputation)
         {
             RankValue = rank;
             ReputationValue = reputation;
@@ -91,7 +102,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
             if (d is MajorFactionPanel c)
             {
                 c.ReputationText = AppRes.GetResource<string>($"Faction.Reputation.{e.NewValue}.Text");
-                c.tbRepuation.Foreground =  new SolidColorBrush(e.NewValue switch
+                c.ReputationBrush =  new SolidColorBrush(e.NewValue switch
                 {
                     0 => Colors.Red,
                     1 => Colors.Orange,
@@ -114,14 +125,14 @@ namespace NSW.EliteDangerous.Copilot.Controls
                 var text = AppRes.GetResource<string>($"Faction.{c.Faction}.{c.RankValue}.Text");
                 if (string.IsNullOrWhiteSpace(text))
                 {
-                    c.tbRank.Visibility = Visibility.Collapsed;
+                    c.RankVisibility = Visibility.Collapsed;
                     c.Image = AppRes.GetResource<ImageSource>($"Faction.{c.Faction}.Icon");
                 }
                 else
                 {
                     c.Image = AppRes.GetResource<ImageSource>($"Faction.{c.Faction}.Navy.Icon");
                     c.RankText = text;
-                    c.tbRank.Visibility = Visibility.Visible;
+                    c.RankVisibility = Visibility.Visible;
                 }
             }
         }

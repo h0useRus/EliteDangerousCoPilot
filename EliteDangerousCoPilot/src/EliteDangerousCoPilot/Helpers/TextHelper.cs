@@ -6,6 +6,7 @@ namespace NSW.EliteDangerous.Copilot.Helpers
     {
         public static string Yes => AppRes.GetResource<string>("Strings.Yes");
         public static string No => AppRes.GetResource<string>("Strings.No");
+        public static string NoInformation => AppRes.GetResource<string>("Strings.NoInformation");
 
         public static string GetText(ApiStatus apiStatus) => AppRes.GetResource<string>($"Api.Status.{(int)apiStatus}.Text");
         public static string GetText(BodyType bodyType) => AppRes.GetResource<string>($"Api.BodyType.{(int)bodyType}.Text");

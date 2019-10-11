@@ -7,7 +7,6 @@ namespace NSW.EliteDangerous.Copilot.Controls
 {
     public enum CommonRank
     {
-        Unknown,
         Combat,
         Exploration,
         Trade,
@@ -25,7 +24,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
                 OnValueChanged
             ));
         public static readonly DependencyProperty RankProperty = DependencyProperty.Register(nameof(Rank), typeof(CommonRank), typeof(CommonRankPanel),
-            new FrameworkPropertyMetadata(CommonRank.Unknown,
+            new FrameworkPropertyMetadata(CommonRank.Combat,
                 FrameworkPropertyMetadataOptions.AffectsRender, 
                 OnValueChanged
             ));

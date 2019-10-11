@@ -5,19 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:NSW.EliteDangerous.Copilot.Controls"
         xmlns:local="clr-namespace:NSW.EliteDangerous.Copilot"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="{StaticResource App.Title}"
         Icon="{StaticResource App.Icon}"
-        Width="800" Height="700"
+        Width="800" Height="800"
+        MinHeight="800"
         WindowStartupLocation="CenterScreen"
         ContentRendered="OnMainWindowContentRendered"
         Closing="OnMainWindowClosing">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Программа">
-                <MenuItem Header="Выход"></MenuItem>
-            </MenuItem>
-        </Menu>
         <StatusBar DockPanel.Dock="Bottom" Height="25">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Name="tbApiStatus"/>
@@ -27,93 +24,85 @@
             <TabItem Header="{StaticResource Strings.Information}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="270" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="{StaticResource Strings.Pilot}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="0">
                         <StackPanel>
-                            <TextBlock Text="{StaticResource Strings.Id}"/>
-                            <TextBox Name="tbPilot_ID" IsReadOnly="True"/>
                             <TextBlock Text="{StaticResource Strings.Human.Name}"/>
-                            <TextBox Name="tbPilot_Name" IsReadOnly="True"/>
-                            <TextBlock Text="{StaticResource Strings.LegalState}"/>
-                            <TextBox Name="tbPilot_LegalState" IsReadOnly="True"/>
-                            <ItemsControl Name="icPilot_Ranks" Margin="0,5,0,0" Visibility="Collapsed">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="80"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                            <StackPanel Grid.Column="1">
-                                                <TextBlock Margin="0,20,0,0" Text="{Binding Name}"/>
-                                                <ProgressBar Minimum="0" Maximum="100" Height="10" Value="{Binding Progress}"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <!--<uc:CommonRankPanel x:Name="rankCombat" Rank="Combat"/>
-                            <uc:CommonRankPanel x:Name="rankTrade" Rank="Trade"/>
-                            <uc:CommonRankPanel x:Name="rankExplore" Rank="Exploration"/>
-                            <uc:CommonRankPanel x:Name="rankCqc" Rank="Cqc"/>-->
-                            <!--<uc:MajorFactionPanel x:Name="mfpAlliance" Faction="Alliance"/>
-                            <uc:MajorFactionPanel x:Name="mfpEmpire" Faction="Empire"/>
-                            <uc:MajorFactionPanel x:Name="mfpFederation" Faction="Federation"/>
-                            <uc:MajorFactionPanel x:Name="mfpIndependent" Faction="Independent"/>-->
+                            <TextBox Name="PilotName" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.License}"/>
+                            <TextBox Name="PilotLicense" IsReadOnly="True"/>
+                            <Border Name="PilotLegalStateBorder" BorderThickness="1" Margin="0,5,0,0">
+                                <TextBlock Name="PilotLegalState" Margin="0,2,0,5" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </Border>
+                            <GroupBox Header="{StaticResource Strings.Ranks}">
+                                <WrapPanel HorizontalAlignment="Center">
+                                    <uc:CommonRankPanel x:Name="PilotRankCombat" Rank="Combat"/>
+                                    <uc:CommonRankPanel x:Name="PilotRankExplore" Rank="Exploration"/>
+                                    <uc:CommonRankPanel x:Name="PilotRankTrade" Rank="Trade"/>
+                                    <uc:CommonRankPanel x:Name="PilotRankCqc" Rank="Cqc"/>
+                                </WrapPanel>
+                            </GroupBox>
+                            <GroupBox Header="{StaticResource Strings.FactionRanks}">
+                                <WrapPanel>
+                                    <uc:MajorFactionPanel x:Name="PilotRankFederation" Faction="Federation"/>
+                                    <uc:MajorFactionPanel x:Name="PilotRankEmpire" Faction="Empire"/>
+                                    <uc:MajorFactionPanel x:Name="PilotRankAlliance" Faction="Alliance"/>
+                                    <uc:MajorFactionPanel x:Name="PilotRankIndependent" Faction="Independent"/>
+                                </WrapPanel>
+                            </GroupBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="{StaticResource Strings.Ship}" Background="GhostWhite" BorderBrush="Gainsboro" Grid.Column="1">
                         <StackPanel>
                             <TextBlock Text="{StaticResource Strings.Type}"/>
-                            <TextBox Name="tbShip_Type" IsReadOnly="True"/>
+                            <TextBox Name="ShipType" IsReadOnly="True"/>
                             <TextBlock Text="{StaticResource Strings.Body.Name}"/>
-                            <TextBox Name="tbShip_Name" IsReadOnly="True"/>
+                            <TextBox Name="ShipName" IsReadOnly="True"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem Header="{StaticResource Strings.Navigation}">
-                 <StackPanel Orientation="Vertical">
-                        <GroupBox Name="gbStarSystem" Header="{StaticResource Strings.StarSystem}" Background="GhostWhite" BorderBrush="Gainsboro">
-                            <StackPanel>
-                                <TextBlock Text="{StaticResource Strings.Body.Name}"/>
-                                <TextBox Name="tbStarSystem_Name" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Population}"/>
-                                <TextBox Name="tbStarSystem_Population" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Government}"/> 
-                                <TextBox Name="tbStarSystem_Government" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Security}"/>
-                                <TextBox Name="tbStarSystem_Security" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Economy}"/>
-                                <TextBox Name="tbStarSystem_Economy" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.SecondaryEconomy}"/>
-                                <TextBox Name="tbStarSystem_SecondaryEconomy" IsReadOnly="True"/>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Name="gbSystemBody" Header="{StaticResource Strings.SystemBody}" Background="GhostWhite" BorderBrush="Gainsboro">
-                            <StackPanel>
-                                <TextBlock Text="{StaticResource Strings.Body.Name}"/>
-                                <TextBox Name="tbSystemBody_Name" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Type}"/>
-                                <TextBox Name="tbSystemBody_Type" IsReadOnly="True"/>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Name="gbStation" Header="{StaticResource Strings.Station}" Background="GhostWhite" BorderBrush="Gainsboro">
-                            <StackPanel>
-                                <TextBlock Text="{StaticResource Strings.Body.Name}" />
-                                <TextBox Name="tbStation_Name" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Type}"/>
-                                <TextBox Name="tbStation_Type" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Government}"/>
-                                <TextBox Name="tbStation_Government" IsReadOnly="True"/>
-                                <TextBlock Text="{StaticResource Strings.Economy}"/>
-                                <TextBox Name="tbStation_Economy" IsReadOnly="True"/>
-                            </StackPanel>
-                        </GroupBox>
-                    </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Name="gbStarSystem" Header="{StaticResource Strings.StarSystem}" Background="GhostWhite" BorderBrush="Gainsboro">
+                        <StackPanel>
+                            <TextBlock Text="{StaticResource Strings.Body.Name}"/>
+                            <TextBox Name="tbStarSystem_Name" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Population}"/>
+                            <TextBox Name="tbStarSystem_Population" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Government}"/>
+                            <TextBox Name="tbStarSystem_Government" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Security}"/>
+                            <TextBox Name="tbStarSystem_Security" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Economy}"/>
+                            <TextBox Name="tbStarSystem_Economy" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.SecondaryEconomy}"/>
+                            <TextBox Name="tbStarSystem_SecondaryEconomy" IsReadOnly="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Name="gbSystemBody" Header="{StaticResource Strings.SystemBody}" Background="GhostWhite" BorderBrush="Gainsboro">
+                        <StackPanel>
+                            <TextBlock Text="{StaticResource Strings.Body.Name}"/>
+                            <TextBox Name="tbSystemBody_Name" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Type}"/>
+                            <TextBox Name="tbSystemBody_Type" IsReadOnly="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Name="gbStation" Header="{StaticResource Strings.Station}" Background="GhostWhite" BorderBrush="Gainsboro">
+                        <StackPanel>
+                            <TextBlock Text="{StaticResource Strings.Body.Name}" />
+                            <TextBox Name="tbStation_Name" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Type}"/>
+                            <TextBox Name="tbStation_Type" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Government}"/>
+                            <TextBox Name="tbStation_Government" IsReadOnly="True"/>
+                            <TextBlock Text="{StaticResource Strings.Economy}"/>
+                            <TextBox Name="tbStation_Economy" IsReadOnly="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
             </TabItem>
             <TabItem Header="{StaticResource Strings.Logs}">
                 <Grid>
@@ -137,8 +126,12 @@
                                                 <ColumnDefinition Width="200" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Border BorderBrush="Gainsboro" BorderThickness="0,0,1,0" Grid.Column="0"><TextBlock Text="{Binding TimeStamp}"  /></Border>
-                                            <Border BorderBrush="Gainsboro" BorderThickness="0,0,1,0" Grid.Column="1"><TextBlock Text="{Binding Type}" Margin="5,0,0,0"/></Border>
+                                            <Border BorderBrush="Gainsboro" BorderThickness="0,0,1,0" Grid.Column="0">
+                                                <TextBlock Text="{Binding TimeStamp}"  />
+                                            </Border>
+                                            <Border BorderBrush="Gainsboro" BorderThickness="0,0,1,0" Grid.Column="1">
+                                                <TextBlock Text="{Binding Type}" Margin="5,0,0,0"/>
+                                            </Border>
                                             <TextBlock Text="{Binding Message}" Grid.Column="2"  Margin="5,0,0,0"/>
                                         </Grid>
                                     </DataTemplate>
