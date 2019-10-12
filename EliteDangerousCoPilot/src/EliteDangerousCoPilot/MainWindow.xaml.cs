@@ -134,7 +134,8 @@ namespace NSW.EliteDangerous.Copilot
                     LegalState.PassengerWanted => Colors.Orange,
                     LegalState.Speeding => Colors.Orange,
                     LegalState.Wanted => Colors.Salmon,
-                    LegalState.Warrant => Colors.Magenta
+                    LegalState.Warrant => Colors.Magenta,
+                    _ => Colors.Black
                 });
 
                 PilotLegalStateBorder.BorderBrush = PilotLegalState.Foreground;
