@@ -70,7 +70,7 @@
   <ItemGroup>
     <!--<PackageReference Include="MaterialDesignThemes" Version="2.6.0" />-->
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.0" />
-    <PackageReference Include="NSW.EliteDangerous.API" Version="1.26.3-preview2" />
+    <PackageReference Include="NSW.EliteDangerous.API" Version="1.26.3-preview3" />
     <PackageReference Include="NSW.Logging.Files" Version="1.0.2" />
   </ItemGroup>
 
