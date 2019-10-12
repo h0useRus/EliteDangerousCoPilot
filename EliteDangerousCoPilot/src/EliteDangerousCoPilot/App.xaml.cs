@@ -40,7 +40,6 @@ namespace NSW.EliteDangerous.Copilot
                 .AddLogging(cfg => cfg
                     .AddFileLogger(o =>
                     {
-                        o.MaxFileSizeInMB = 5;
                         o.Folder = "logs";
                         o.Template.AddColumn("Category", 50, e => e.Category);
                     }))
