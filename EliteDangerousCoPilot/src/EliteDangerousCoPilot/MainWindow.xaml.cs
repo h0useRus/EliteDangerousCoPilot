@@ -78,7 +78,7 @@ namespace NSW.EliteDangerous.Copilot
                 {
                     gbStation.Visibility = Visibility.Visible;
                     tbStation_Name.Text = e.Station.Name;
-                    tbStation_Type.Text = e.Station.Type;
+                    tbStation_Type.Text = e.Station.Type.ToString();
                     tbStation_Government.Text = e.Station.Government.ToString();
                     tbStation_Economy.Text = e.Station.Economy.ToString();
                 }
