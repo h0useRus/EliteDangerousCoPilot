@@ -158,6 +158,7 @@ namespace NSW.EliteDangerous.Copilot
             OnApiPlayerChanged(this, _api.Player);
             OnApiShipChanged(this, _api.Ship);
             OnApiLocationChanged(this, _api.Location);
+
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e) => _api.Stop();

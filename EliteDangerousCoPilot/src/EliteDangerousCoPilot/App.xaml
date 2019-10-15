@@ -13,6 +13,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />-->
+                <!--Vectors-->
+                <ResourceDictionary Source="Resources/Ships_Icon.xaml" />
+                <ResourceDictionary Source="Resources/Ranks_Icon.xaml" />
+                <ResourceDictionary Source="Resources/Stations_Icon.xaml" />
+                <ResourceDictionary Source="Resources/ShipSystems_Icon.xaml" />
                 <!--Localizations-->
                 <ResourceDictionary Source="Resources/UI_Ru.xaml" />
                 <ResourceDictionary Source="Resources/EliteApi_Ru.xaml" />

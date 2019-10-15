@@ -101,7 +101,7 @@ namespace NSW.EliteDangerous.Copilot.Controls
         {
             if (d is MajorFactionPanel c)
             {
-                c.ReputationText = AppRes.GetResource<string>($"Faction.Reputation.{e.NewValue}.Text");
+                c.ReputationText = App.GetResource<string>($"Faction.Reputation.{e.NewValue}.Text");
                 c.ReputationBrush =  new SolidColorBrush(e.NewValue switch
                 {
                     0 => Colors.Red,
@@ -119,18 +119,18 @@ namespace NSW.EliteDangerous.Copilot.Controls
         {
             if (d is MajorFactionPanel c)
             {
-                c.Image = AppRes.GetResource<ImageSource>(c.RankValue > 0
+                c.Image = App.GetResource<ImageSource>(c.RankValue > 0
                     ? $"Faction.{c.Faction}.Navy.Icon"
                     : $"Faction.{c.Faction}.Icon");
-                var text = AppRes.GetResource<string>($"Faction.{c.Faction}.{c.RankValue}.Text");
+                var text = App.GetResource<string>($"Faction.{c.Faction}.{c.RankValue}.Text");
                 if (string.IsNullOrWhiteSpace(text))
                 {
                     c.RankVisibility = Visibility.Collapsed;
-                    c.Image = AppRes.GetResource<ImageSource>($"Faction.{c.Faction}.Icon");
+                    c.Image = App.GetResource<ImageSource>($"Faction.{c.Faction}.Icon");
                 }
                 else
                 {
-                    c.Image = AppRes.GetResource<ImageSource>($"Faction.{c.Faction}.Navy.Icon");
+                    c.Image = App.GetResource<ImageSource>($"Faction.{c.Faction}.Navy.Icon");
                     c.RankText = text;
                     c.RankVisibility = Visibility.Visible;
                 }

@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NSW.EliteDangerous.Copilot.Controls"
              mc:Ignorable="d"
-             Width="120" Height="130">
-    <Grid>
-        <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Height="120"/>
-        <StackPanel Margin="0,110,0,0">
-            <TextBlock Text="{Binding RankText}" TextAlignment="Center" />
-            <ProgressBar Margin="2,0,2,0" Minimum="0" Maximum="100" Height="3" Value="{Binding Progress}"/>
-        </StackPanel>    
-    </Grid>
+             Width="120" Height="120">
+    <StackPanel>
+        <Image Name="RankIcon" RenderOptions.BitmapScalingMode="HighQuality" Height="80"  Margin="5">
+            <Image.BitmapEffect>
+              <DropShadowBitmapEffect Direction="135" ShadowDepth="3"  />
+            </Image.BitmapEffect>
+        </Image>
+        <TextBlock Name="RankText" TextAlignment="Center" />
+        <ProgressBar Name="RankProgress" Margin="2,0,2,0" Minimum="0" Maximum="100" Height="3"/>
+    </StackPanel>
 </UserControl>

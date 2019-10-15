@@ -46,7 +46,14 @@ namespace NSW.EliteDangerous.Copilot
                 .AddEliteDangerousAPI()
                 .AddScoped<MainWindow>();
         }
-            
+
+        public static T GetResource<T>(string key)
+        {
+            var result = Application.Current.TryFindResource(key);
+            if (result != null)
+                return (T)result;
+            return default;
+        }
 
         private void AppStartup(object sender, StartupEventArgs e)
         {

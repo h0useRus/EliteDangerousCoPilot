@@ -141,6 +141,24 @@
                     </Border>
                 </Grid>
             </TabItem>
+            <TabItem Header="Test">
+                <WrapPanel>
+                    <Image Height="80" Source="{StaticResource Ship.Adder.DrawingImage}" />
+                    <Image Height="80" Source="{StaticResource Ship.AllianceChallenger.DrawingImage}" />
+                    <Image Height="80" Source="{StaticResource Ship.AllianceChieftain.DrawingImage}" />
+                    <Image Height="80" Source="{StaticResource Ship.AllianceCrusader.DrawingImage}" />
+                    <Image Height="80" Source="{StaticResource Ship.System.NightVision.On.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Ship.System.NightVision.Off.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.AsteroidBase.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.CoriolisStarport.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.MegaShip.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.OcellusStarport.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.OrbisStarport.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.Outpost.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.PlanetaryOutpost.DrawingImage}"/>
+                    <Image Height="80" Source="{StaticResource Station.PlanetaryPort.DrawingImage}"/>
+                </WrapPanel>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>

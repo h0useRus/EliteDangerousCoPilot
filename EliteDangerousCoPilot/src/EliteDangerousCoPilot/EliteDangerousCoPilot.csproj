@@ -29,42 +29,6 @@
     <Resource Include="res\img\factions\federation_navy.png" />
     <Resource Include="res\img\factions\independent.png" />
     <Resource Include="res\img\factions\independent_navy.png" />
-    <Resource Include="res\img\ranks\combat\0.png" />
-    <Resource Include="res\img\ranks\combat\1.png" />
-    <Resource Include="res\img\ranks\combat\2.png" />
-    <Resource Include="res\img\ranks\combat\3.png" />
-    <Resource Include="res\img\ranks\combat\4.png" />
-    <Resource Include="res\img\ranks\combat\5.png" />
-    <Resource Include="res\img\ranks\combat\6.png" />
-    <Resource Include="res\img\ranks\combat\7.png" />
-    <Resource Include="res\img\ranks\combat\8.png" />
-    <Resource Include="res\img\ranks\cqc\0.png" />
-    <Resource Include="res\img\ranks\cqc\1.png" />
-    <Resource Include="res\img\ranks\cqc\2.png" />
-    <Resource Include="res\img\ranks\cqc\3.png" />
-    <Resource Include="res\img\ranks\cqc\4.png" />
-    <Resource Include="res\img\ranks\cqc\5.png" />
-    <Resource Include="res\img\ranks\cqc\6.png" />
-    <Resource Include="res\img\ranks\cqc\7.png" />
-    <Resource Include="res\img\ranks\cqc\8.png" />
-    <Resource Include="res\img\ranks\exploration\0.png" />
-    <Resource Include="res\img\ranks\exploration\1.png" />
-    <Resource Include="res\img\ranks\exploration\2.png" />
-    <Resource Include="res\img\ranks\exploration\3.png" />
-    <Resource Include="res\img\ranks\exploration\4.png" />
-    <Resource Include="res\img\ranks\exploration\5.png" />
-    <Resource Include="res\img\ranks\exploration\6.png" />
-    <Resource Include="res\img\ranks\exploration\7.png" />
-    <Resource Include="res\img\ranks\exploration\8.png" />
-    <Resource Include="res\img\ranks\trade\0.png" />
-    <Resource Include="res\img\ranks\trade\1.png" />
-    <Resource Include="res\img\ranks\trade\2.png" />
-    <Resource Include="res\img\ranks\trade\3.png" />
-    <Resource Include="res\img\ranks\trade\4.png" />
-    <Resource Include="res\img\ranks\trade\5.png" />
-    <Resource Include="res\img\ranks\trade\6.png" />
-    <Resource Include="res\img\ranks\trade\7.png" />
-    <Resource Include="res\img\ranks\trade\8.png" />
   </ItemGroup>
 
   <ItemGroup>
